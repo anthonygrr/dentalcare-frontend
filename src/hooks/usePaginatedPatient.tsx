@@ -3,11 +3,11 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react'
 
 
-export const usePaginatedPatient = (page: number, size: number) => {
+export const usePaginatedPatient = (page: number, size: number, sort: string = "name,asc") => {
   return useQuery({
-    queryKey: ["patients", { page, size }],
-    queryFn: () => getPatientsByPage(page, size),
-    staleTime: 1000 * 60 * 5, // por 5 minutos
+    queryKey: ["patients", { page, size, sort }],
+    queryFn: () => getPatientsByPage(page, size, sort),
+    staleTime: 1000 * 60 * 5,
   });
 }
 

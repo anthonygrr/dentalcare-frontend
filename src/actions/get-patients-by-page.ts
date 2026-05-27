@@ -4,6 +4,7 @@ import type { PatientsResponse } from "@/types/patients-response";
 export const getPatientsByPage = async (
   page: number,
   size: number = 6,
+  sort: string = "name,asc"
 ): Promise<PatientsResponse> => {
   if (isNaN(page)) {
     page = 1;
@@ -13,7 +14,7 @@ export const getPatientsByPage = async (
   }
 
   const { data } = await dentalApi.get("", {
-    params: { page, size },
+    params: { page, size, sort },
   });
 
   return {
