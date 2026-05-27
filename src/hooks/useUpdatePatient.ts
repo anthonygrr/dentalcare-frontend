@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { updatePatient, type PatientUpdateRequest } from '@/actions/update-patient';
+import { updatePatient, type PatientUpdateRequest } from '@/actions/patients/update-patient';
 
 export const useUpdatePatient = (page: number, size: number) => {
   const queryClient = useQueryClient();

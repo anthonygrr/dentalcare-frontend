@@ -1,4 +1,4 @@
-import { getPatientsByPage } from '@/actions/get-patients-by-page';
+import { getPatientsByPage } from '@/actions/patients/get-patients-by-page';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react'
 

@@ -25,7 +25,7 @@ import { Label } from "@/components/ui/label";
 import { Eye, Pencil, Trash2, Search, Plus, Loader2 } from "lucide-react";
 import { DataPagination } from "@/components/DataPagination";
 import { toast } from "sonner";
-import { getPatientsByPage } from "@/actions/get-patients-by-page";
+import { getPatientsByPage } from "@/actions/patients/get-patients-by-page";
 import usePaginatedPatient from "@/hooks/usePaginatedPatient";
 import { useCreatePatient } from "@/hooks/useCreatePatient";
 import { useUpdatePatient } from "@/hooks/useUpdatePatient";
