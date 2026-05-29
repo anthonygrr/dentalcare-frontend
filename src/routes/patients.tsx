@@ -65,12 +65,10 @@ function PatientsPage() {
   const [createOpen, setCreateOpen] = useState(false);
 
   const isSearching = q.trim().length > 0;
-  const needsAllPatients = isSearching || createOpen || edit !== null;
 
-  const { data: allPatientsData, isLoading: isSearchLoading } = useQuery({
+  const { data: allPatientsData } = useQuery({
     queryKey: ["patients", "all"],
     queryFn: () => getPatientsByPage(0, 10_000),
-    enabled: needsAllPatients,
     staleTime: 1000 * 60 * 5,
   });
 
@@ -81,8 +79,6 @@ function PatientsPage() {
         p.name.toLowerCase().includes(q.toLowerCase()),
       )
     : patients;
-
-  const isLoadingAll = isSearching && isSearchLoading;
 
   return (
     <div className="space-y-6">
@@ -126,7 +122,7 @@ function PatientsPage() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {isLoading || isLoadingAll ? (
+                {isLoading ? (
                   <TableRow>
                     <TableCell colSpan={4} className="text-center py-10">
                       <Loader2 className="h-6 w-6 animate-spin mx-auto text-muted-foreground" />
