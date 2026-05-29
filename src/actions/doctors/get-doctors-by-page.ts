@@ -1,21 +1,19 @@
-import { dentalApi } from "@/api/dentalcare.api";
-import { DoctorsResponse } from "@/types/doctors-response";
+import { doctorApi } from "@/api/doctor.api";
+import type { DoctorsResponse } from "@/types/doctors-response";
 
 export const getDoctorsByPage = async (
   page: number,
   size: number = 6,
-  sort: string = "name,asc"
+  sort: string = "name,asc",
+  name?: string,
 ): Promise<DoctorsResponse> => {
-  if (isNaN(page)) {
-    page = 1;
-  }
-  if (isNaN(size)) {
-    size = 6;
-  }
+  if (isNaN(page)) page = 1;
+  if (isNaN(size)) size = 6;
 
-  const { data } = await dentalApi.get("", {
-    params: { page, size, sort },
-  });
+  const params: Record<string, string | number> = { page, size, sort };
+  if (name) params.name = name;
+
+  const { data } = await doctorApi.get("", { params });
 
   return {
     doctors: data.content ?? [],
