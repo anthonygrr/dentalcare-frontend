@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as PatientsRouteImport } from './routes/patients'
 import { Route as MedicalRecordsRouteImport } from './routes/medical-records'
+import { Route as DoctorsRouteImport } from './routes/doctors'
 import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as AppointmentsRouteImport } from './routes/appointments'
 import { Route as IndexRouteImport } from './routes/index'
@@ -29,6 +30,11 @@ const PatientsRoute = PatientsRouteImport.update({
 const MedicalRecordsRoute = MedicalRecordsRouteImport.update({
   id: '/medical-records',
   path: '/medical-records',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DoctorsRoute = DoctorsRouteImport.update({
+  id: '/doctors',
+  path: '/doctors',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CalendarRoute = CalendarRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/appointments': typeof AppointmentsRoute
   '/calendar': typeof CalendarRoute
+  '/doctors': typeof DoctorsRoute
   '/medical-records': typeof MedicalRecordsRoute
   '/patients': typeof PatientsRoute
   '/settings': typeof SettingsRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/appointments': typeof AppointmentsRoute
   '/calendar': typeof CalendarRoute
+  '/doctors': typeof DoctorsRoute
   '/medical-records': typeof MedicalRecordsRoute
   '/patients': typeof PatientsRoute
   '/settings': typeof SettingsRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/appointments': typeof AppointmentsRoute
   '/calendar': typeof CalendarRoute
+  '/doctors': typeof DoctorsRoute
   '/medical-records': typeof MedicalRecordsRoute
   '/patients': typeof PatientsRoute
   '/settings': typeof SettingsRoute
@@ -78,6 +87,7 @@ export interface FileRouteTypes {
     | '/'
     | '/appointments'
     | '/calendar'
+    | '/doctors'
     | '/medical-records'
     | '/patients'
     | '/settings'
@@ -86,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/appointments'
     | '/calendar'
+    | '/doctors'
     | '/medical-records'
     | '/patients'
     | '/settings'
@@ -94,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/appointments'
     | '/calendar'
+    | '/doctors'
     | '/medical-records'
     | '/patients'
     | '/settings'
@@ -103,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AppointmentsRoute: typeof AppointmentsRoute
   CalendarRoute: typeof CalendarRoute
+  DoctorsRoute: typeof DoctorsRoute
   MedicalRecordsRoute: typeof MedicalRecordsRoute
   PatientsRoute: typeof PatientsRoute
   SettingsRoute: typeof SettingsRoute
@@ -129,6 +142,13 @@ declare module '@tanstack/react-router' {
       path: '/medical-records'
       fullPath: '/medical-records'
       preLoaderRoute: typeof MedicalRecordsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/doctors': {
+      id: '/doctors'
+      path: '/doctors'
+      fullPath: '/doctors'
+      preLoaderRoute: typeof DoctorsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/calendar': {
@@ -159,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AppointmentsRoute: AppointmentsRoute,
   CalendarRoute: CalendarRoute,
+  DoctorsRoute: DoctorsRoute,
   MedicalRecordsRoute: MedicalRecordsRoute,
   PatientsRoute: PatientsRoute,
   SettingsRoute: SettingsRoute,

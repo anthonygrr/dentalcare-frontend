@@ -24,6 +24,7 @@ const items = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
   { title: "Appointments", url: "/appointments", icon: CalendarCheck },
   { title: "Patients", url: "/patients", icon: Users },
+  { title: "Doctors", url: "/doctors", icon: Stethoscope },
   { title: "Calendar", url: "/calendar", icon: CalIcon },
   { title: "Medical Records", url: "/medical-records", icon: FileText },
   { title: "Settings", url: "/settings", icon: SettingsIcon },
