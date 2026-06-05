@@ -7,6 +7,7 @@ import {
   FileText,
   Settings as SettingsIcon,
   Stethoscope,
+  LogOut,
 } from "lucide-react";
 import {
   Sidebar,
@@ -18,7 +19,10 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarFooter,
 } from "@/components/ui/sidebar";
+import { Button } from "@/components/ui/button";
+import { useAuth } from "@/contexts/auth";
 
 const items = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
@@ -34,6 +38,7 @@ export function AppSidebar() {
   const currentPath = useRouterState({
     select: (s) => s.location.pathname,
   });
+  const { logout } = useAuth();
 
   return (
     <Sidebar collapsible="icon">
@@ -43,7 +48,7 @@ export function AppSidebar() {
             <Stethoscope className="h-5 w-5" />
           </div>
           <div className="flex flex-col leading-tight group-data-[collapsible=icon]:hidden">
-            <span className="font-semibold">BrightSmile</span>
+            <span className="font-semibold">DentalCare</span>
             <span className="text-xs text-muted-foreground">Dental Clinic</span>
           </div>
         </div>
@@ -70,6 +75,18 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild onClick={logout}>
+              <Button variant="ghost" className="w-full justify-start gap-2">
+                <LogOut className="h-4 w-4" />
+                <span className="group-data-[collapsible=icon]:hidden">Logout</span>
+              </Button>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
     </Sidebar>
   );
 }

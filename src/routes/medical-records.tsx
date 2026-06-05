@@ -31,7 +31,7 @@ import { useUpdateMedicalRecord } from "@/hooks/useUpdateMedicalRecord";
 import { useDeleteMedicalRecord } from "@/hooks/useDeleteMedicalRecord";
 
 export const Route = createFileRoute("/medical-records")({
-  head: () => ({ meta: [{ title: "Medical Records — BrightSmile" }] }),
+  head: () => ({ meta: [{ title: "Medical Records — DentalCare" }] }),
   component: RecordsPage,
 });
 

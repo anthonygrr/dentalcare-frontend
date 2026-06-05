@@ -54,6 +54,7 @@ import type { Doctor } from "@/types/doctor.interface";
 import { Procedures } from "@/types/procedures.enum";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
+import { useAuth } from "@/contexts/auth";
 import { getPatientsByPage } from "@/actions/patients/get-patients-by-page";
 import { getDoctorsByPage } from "@/actions/doctors/get-doctors-by-page";
 import { getAppointmentsByPage } from "@/actions/appointments/get-appointments-by-page";
@@ -62,7 +63,7 @@ import { useCreateAppointment } from "@/hooks/useCreateAppointment";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Dashboard — BrightSmile" },
+      { title: "Dashboard — DentalCare" },
       {
         name: "description",
         content: "Overview of patients, schedules and upcoming appointments.",
@@ -84,6 +85,7 @@ const statusColor: Record<string, string> = {
 const PROCEDURE_LIST = Object.values(Procedures);
 
 function Dashboard() {
+  const { user } = useAuth();
   const [createOpen, setCreateOpen] = useState(false);
 
   const { data: patientResponse } = useQuery({
@@ -151,7 +153,7 @@ function Dashboard() {
     <div className="space-y-6">
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Welcome back, Dr. Adams</h1>
+          <h1 className="text-2xl font-semibold tracking-tight">Welcome back, {user?.fullName ?? "Dr. Adams"}</h1>
           <p className="text-sm text-muted-foreground">Here's what's happening today.</p>
         </div>
         <Button onClick={() => setCreateOpen(true)}>

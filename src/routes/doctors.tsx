@@ -40,7 +40,7 @@ import { useUpdateDoctor } from "@/hooks/useUpdateDoctor";
 import { useDeleteDoctor } from "@/hooks/useDeleteDoctor";
 
 export const Route = createFileRoute("/doctors")({
-  head: () => ({ meta: [{ title: "Doctors — BrightSmile" }] }),
+  head: () => ({ meta: [{ title: "Doctors — DentalCare" }] }),
   component: DoctorsPage,
 });
 

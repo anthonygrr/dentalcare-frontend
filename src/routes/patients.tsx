@@ -32,7 +32,7 @@ import { useUpdatePatient } from "@/hooks/useUpdatePatient";
 import { useDeletePatient } from "@/hooks/useDeletePatient";
 
 export const Route = createFileRoute("/patients")({
-  head: () => ({ meta: [{ title: "Patients — BrightSmile" }] }),
+  head: () => ({ meta: [{ title: "Patients — DentalCare" }] }),
   component: PatientsPage,
 });
 

@@ -47,7 +47,7 @@ import { getDoctorsByPage } from "@/actions/doctors/get-doctors-by-page";
 import { useCreateAppointment } from "@/hooks/useCreateAppointment";
 
 export const Route = createFileRoute("/calendar")({
-  head: () => ({ meta: [{ title: "Calendar — BrightSmile" }] }),
+  head: () => ({ meta: [{ title: "Calendar — DentalCare" }] }),
   component: CalendarPage,
 });
 

@@ -60,7 +60,7 @@ import { useDeleteAppointment } from "@/hooks/useDeleteAppointment";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/appointments")({
-  head: () => ({ meta: [{ title: "Appointments — BrightSmile" }] }),
+  head: () => ({ meta: [{ title: "Appointments — DentalCare" }] }),
   component: AppointmentsPage,
 });
 
