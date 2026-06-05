@@ -89,7 +89,7 @@ function Dashboard() {
   const [createOpen, setCreateOpen] = useState(false);
 
   const { data: patientResponse } = useQuery({
-    queryKey: ["patients", "all"],
+    queryKey: ["patients", "count"],
     queryFn: () => getPatientsByPage(0, 1),
     staleTime: 1000 * 60 * 5,
   });
